@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 
 const formSchema = z.object({
   totalMonth: z.number().int().max(12).min(1),
@@ -26,20 +26,21 @@ const App = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const handleInfo = (result , coin , month , days) => {
+  const handleInfo = (result, coin, month, days) => {
     return MySwal.fire({
-      title: `(${result}) !با موفقیت انجام شد`,
+      title: `(${result}) : تعداد کوین `,
       text: `با ${coin} عدد کوین و بمدت ${month} روز و برداشت در هر دوره ${days} روزه در پایان ${result} مقدار کوین خواهید داشت`,
-      icon: 'success',
-      iconColor:'#c14b6a',
-      confirmButtonColor:"#c14b6a",
+      icon: "success",
+      iconColor: "#944f87",
       confirmButtonText: "تایید",
       customClass: {
-    confirmButton:"font-bold py-3 px-8 bg-gradient-to-tl from-red-500 to-blue-600 text-white rounded-full text-xl" 
+        confirmButton:
+          "font-bold py-3 px-12 bg-gradient-to-tl from-red-500 to-blue-600 text-white rounded-full text-xl",
+          text:"font-semibold"
       },
-      buttonsStyling: false
-    })
-  }
+      buttonsStyling: false,
+    });
+  };
 
   const onSubmit = (values) => {
     const month = values.totalMonth * 30;
@@ -57,7 +58,7 @@ const App = () => {
       result = x + result;
       i++;
     }
-    handleInfo(result , coin , month , days)
+    handleInfo(result, coin, month, days);
   };
 
   return (
