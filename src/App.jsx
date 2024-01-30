@@ -28,7 +28,7 @@ const App = () => {
 
   const handleInfo = (result, coin, month, days) => {
     return MySwal.fire({
-      title: `(${result}) : تعداد کوین `,
+      title: `( ${result} ) : تعداد کوین `,
       text: `با ${coin} عدد کوین و بمدت ${month} روز و برداشت در هر دوره ${days} روزه در پایان ${result} مقدار کوین خواهید داشت`,
       icon: "success",
       iconColor: "#944f87",
@@ -36,7 +36,8 @@ const App = () => {
       customClass: {
         confirmButton:
           "font-bold py-3 px-12 bg-gradient-to-tl from-red-500 to-blue-600 text-white rounded-full text-xl",
-          text:"font-semibold"
+          text:"font-semibold",
+         title: "whitespace-nowrap max-[370px]:text-xl",
       },
       buttonsStyling: false,
     });
@@ -58,6 +59,7 @@ const App = () => {
       result = x + result;
       i++;
     }
+    result = result.toFixed(3);
     handleInfo(result, coin, month, days);
   };
 
