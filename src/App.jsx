@@ -200,7 +200,7 @@ const App = () => {
         </div>
         <button
           type="submit"
-          className="mt-2 bg-gradient-to-tl from-[#ff4848e0] to-[#1f66ffea] font-semibold px-8 py-4 text-white text-2xl rounded-full transform scale-95 transition hover:scale-100"
+          className="mt-2 bg-gradient-to-tl from-[#ff4848ef] to-[#1f66fff4] font-semibold px-8 py-4 text-white text-2xl rounded-full transform scale-95 transition hover:scale-100"
         >
           see the answer!
         </button>
