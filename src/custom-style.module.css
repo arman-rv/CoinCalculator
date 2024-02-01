@@ -1,0 +1,13 @@
+svg {
+  transform: scale(2.35);
+}
+@media screen and (max-width: 380px) {
+  svg {
+    transform: scale(2);
+  }
+}
+@media screen and (max-width: 300px) {
+    svg {
+      transform: scale(1.6);
+    }
+  }
