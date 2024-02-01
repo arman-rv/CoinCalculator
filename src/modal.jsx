@@ -46,7 +46,7 @@ const Modal = ({ setModalCheck, setPrice }) => {
         >
           <Toaster />
           <div
-            className="flex w-full justify-around gap-3 max-[380px]:gap-2 overflow-y-scroll overflow-x-hidden  h-[370px] 
+            className="flex w-full justify-around gap-3 max-[380px]:gap-2 overflow-y-scroll overflow-x-hidden  h-[370px] px-2
             max-[590px]:h-[325px] max-[380px]:h-[265px] max-[300px]:h-[215px]"
           >
             <div className="w-[50%] flex flex-col gap-3 max-[380px]:gap-0">
@@ -62,6 +62,7 @@ const Modal = ({ setModalCheck, setPrice }) => {
               <Input register={register} name="tron" title="TRX" />
               <Input register={register} name="ripple" title="XRP" />
               <Input register={register} name="litecoin" title="LTC" />
+              <div className="border border-transparent max-[380px]:border-[7px]"></div>
             </div>
           </div>
 
