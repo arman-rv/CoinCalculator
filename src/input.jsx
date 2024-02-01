@@ -28,7 +28,7 @@ const Input = ({ register, name, title }) => {
   return (
     <div className="w-full flex p-1 items-center">
       <label
-        className="flex w-full py-9 pl-12  gap-12 items-center-1 rounded-xl shadow-xl cursor-pointer hover:scale-105 tranform transition
+        className="flex w-full py-9 pl-12  gap-12 items-center-1 rounded-xl shadow-lg cursor-pointer hover:scale-105 tranform transition
         max-[590px]:flex-col max-[590px]:items-center max-[590px]:px-0 max-[590px]:py-3 max-[590px]:pt-10 max-[590px]:gap-8 max-[380px]:pt-8 max-[380px]:gap-6 max-[300px]:gap-4 max-[300px]:pt-5"
       >
         {icons[name]}
