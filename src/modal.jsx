@@ -3,7 +3,7 @@ import Input from "./input";
 import toast, { Toaster } from "react-hot-toast";
 import { getCoinData } from "./services/api/get-coin-data";
 
-const Modal = ({ setModalCheck, setPrice }) => {
+const Modal = ({ setModalCheck, setPrice , setCoin }) => {
   const {
     register,
     handleSubmit,
@@ -12,6 +12,7 @@ const Modal = ({ setModalCheck, setPrice }) => {
 
   const onSubmit = async (value) => {
     console.log(value.coin);
+    setCoin(value.coin)
     const result = await getCoinData(value.coin, "usd");
     const price = result?.data[value.coin]?.usd;
 
@@ -20,7 +21,7 @@ const Modal = ({ setModalCheck, setPrice }) => {
 
       toast.success("اطلاعات با موفقیت دریافت شد", {
         duration: 1200,
-        style: { boxShadow: "0 1px 5px 0 #999" },
+        style: { boxShadow: "0 1px 5px 0 #999", color:"#4d5765" },
         className: "text-xl font-bold text-center",
       });
       setTimeout(() => {
@@ -31,7 +32,7 @@ const Modal = ({ setModalCheck, setPrice }) => {
       console.log(result);
       toast.error("خطا در دریافت اطلاعات", {
         duration: 1200,
-        style: { boxShadow: "0 1px 5px 0 #999" },
+        style: { boxShadow: "0 1px 5px 0 #999", color:"#4d5765" },
         className: "text-xl font-bold text-center",
       });
     }
@@ -44,6 +45,8 @@ const Modal = ({ setModalCheck, setPrice }) => {
           onSubmit={handleSubmit(onSubmit)}
           className="w-[clamp(60px,100%,600px)] bg-white rounded-xl gap-5 p-5 flex flex-col justify-center items-center"
         >
+        <h2 className="text-gray-600 text-xl font-semibold drop-shadow-2xl flex gap-10
+        max-[445px]:gap-5 max-[300px]:text-lg"> یک کوین را انتخاب کنید </h2>
           <Toaster />
           <div
             className="flex w-full justify-around gap-3 max-[380px]:gap-2 overflow-y-scroll overflow-x-hidden  h-[370px] px-2

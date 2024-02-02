@@ -1,12 +1,12 @@
 import { cn } from "../libs/utils";
 import style from "./custom-style.module.css";
 
-export const BitCoin = () => {
+export const BitCoin = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+        (isLading ? style.landing_svg : style.svg )
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -24,12 +24,12 @@ export const BitCoin = () => {
   );
 };
 
-export const Tether = () => {
+export const Tether = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+        (isLading ? style.landing_svg : style.svg )
       )}
       height="32"
       width="32"
@@ -46,12 +46,13 @@ export const Tether = () => {
   );
 };
 
-export const DogeCoin = () => {
+export const DogeCoin = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+        (isLading ? style.landing_svg : style.svg )
+
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -68,12 +69,13 @@ export const DogeCoin = () => {
   );
 };
 
-export const BinanceCoin = () => {
+export const BinanceCoin = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+        (isLading ? style.landing_svg : style.svg )
+
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -90,7 +92,7 @@ export const BinanceCoin = () => {
   );
 };
 
-export const Ethereum = () => {
+export const Ethereum = ({isLading}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +100,8 @@ export const Ethereum = () => {
       height="32"
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+        (isLading ? style.landing_svg : style.svg )
+
       )}
     >
       <g fill="none" fill-rule="evenodd">
@@ -116,12 +119,13 @@ export const Ethereum = () => {
   );
 };
 
-export const Dash = () => {
+export const Dash = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+        (isLading ? style.landing_svg : style.svg )
+
       )}
       width="32"
       height="32"
@@ -139,12 +143,13 @@ export const Dash = () => {
   );
 };
 
-export const BitCoinCash = () => {
+export const BitCoinCash = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+                (isLading ? style.landing_svg : style.svg )
+
       )}
       height="32"
       viewBox="0 0 32 32"
@@ -162,12 +167,13 @@ export const BitCoinCash = () => {
   );
 };
 
-export const LiteCoin = () => {
+export const LiteCoin = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+                (isLading ? style.landing_svg : style.svg )
+
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -185,12 +191,13 @@ export const LiteCoin = () => {
   );
 };
 
-export const Tron = () => {
+export const Tron = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+                (isLading ? style.landing_svg : style.svg )
+
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -207,12 +214,13 @@ export const Tron = () => {
   );
 };
 
-export const Ripple = () => {
+export const Ripple = ({isLading}) => {
   return (
     <svg
       className={cn(
         `bg-gradient-to-tl from-red-500 to-blue-600 rounded-full`,
-        style.svg
+                (isLading ? style.landing_svg : style.svg )
+
       )}
       width="32"
       height="32"

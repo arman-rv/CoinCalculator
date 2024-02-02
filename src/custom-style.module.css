@@ -1,13 +1,27 @@
-svg {
+.svg {
   transform: scale(2.35);
 }
 @media screen and (max-width: 380px) {
-  svg {
+  .svg {
     transform: scale(2);
   }
 }
 @media screen and (max-width: 300px) {
-    svg {
-      transform: scale(1.6);
-    }
+  .svg {
+    transform: scale(1.6);
   }
+}
+
+.landing_svg {
+  transform: scale(1.75);
+}
+@media screen and (max-width: 445px) {
+  .landing_svg {
+    transform: scale(1.5);
+  }
+}
+@media screen and (max-width: 370px) {
+  .landing_svg {
+    transform: scale(1.35);
+  }
+}

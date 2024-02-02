@@ -3,8 +3,20 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "./modal";
+import {
+  BinanceCoin,
+  BitCoin,
+  BitCoinCash,
+  Dash,
+  DogeCoin,
+  Ethereum,
+  LiteCoin,
+  Ripple,
+  Tether,
+  Tron,
+} from "./icons";
 
 const MySwal = withReactContent(Swal);
 
@@ -20,6 +32,21 @@ const formSchema = z.object({
 });
 
 const App = () => {
+  const [coin, setCoin] = useState();
+
+  const icons = {
+    dogecoin: <DogeCoin isLading={true} />,
+    binancecoin: <BinanceCoin isLading={true} />,
+    bitcoin: <BitCoin isLading={true} />,
+    tether: <Tether isLading={true} />,
+    ethereum: <Ethereum isLading={true} />,
+    litecoin: <LiteCoin isLading={true} />,
+    ripple: <Ripple isLading={true} />,
+    bitcoincash: <BitCoinCash isLading={true} />,
+    dash: <Dash isLading={true} />,
+    tron: <Tron isLading={true} />,
+  };
+
   const {
     register,
     handleSubmit,
@@ -46,24 +73,25 @@ const App = () => {
 
   const [price, setPrice] = useState();
 
-  const [zarib, setZarib] = useState(2);
   const zaribCalc = (price) => {
     const x = 0.03202;
+    let zarib;
+    console.log(zarib);
     if (price / x <= 500) {
-      setZarib(2);
+      zarib = 2;
     } else if (price / x > 500 && price / x <= 2000) {
-      setZarib(2.5);
+      zarib = 2.5;
     } else if (price / x > 2000 && price / x <= 5000) {
-      setZarib(3);
+      zarib = 3;
     } else if (price / x > 5000 && price / x <= 10000) {
-      setZarib(4);
+      zarib = 4;
     } else if (price / x > 10000 && price / x <= 20000) {
-      setZarib(5);
-    } else if (price / x > 20000){
-      setZarib(6);
+      zarib = 5;
+    } else if (price / x > 20000) {
+      zarib = 6;
     }
+    return zarib;
   };
-  console.log(zarib)
 
   const onSubmit = (values) => {
     const month = values.totalMonth * 30;
@@ -78,21 +106,18 @@ const App = () => {
   const calc = (coin, index, days, month) => {
     let result = coin;
     var i = 0;
-    console.log(zarib)
-
+    let zarib;
     while (i < index) {
       let priceNumber = result * price;
-      zaribCalc(priceNumber);
+      zarib = zaribCalc(priceNumber);
       let x = (result * zarib) / 100;
       x = x * days;
       result = x + result;
       console.log(zarib);
       i++;
     }
-    setZarib(2);
     result = result.toFixed(3);
     handleInfo(result, coin, month, days);
-    console.log(zarib);
   };
 
   // select coin ________________________________________________________________
@@ -102,7 +127,11 @@ const App = () => {
   return (
     <div className="h-full flex flex-col justify-center items-center gap-10 whitespace-nowrap">
       {modalCheck && (
-        <Modal setModalCheck={setModalCheck} setPrice={setPrice} />
+        <Modal
+          setModalCheck={setModalCheck}
+          setPrice={setPrice}
+          setCoin={setCoin}
+        />
       )}
 
       <h1
@@ -115,8 +144,10 @@ const App = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="w-[clamp(60px,100%,500px)] flex flex-col items-center px-10 py-12 rounded-3xl bg-[#ffffff89] gap-7"
       >
-        <h2 className="text-gray-600 text-2xl font-semibold drop-shadow-2xl">
-          Earning Calculator...
+        <h2 className="text-gray-600 text-2xl font-semibold drop-shadow-2xl flex gap-10
+        max-[445px]:gap-5 max-[370px]:text-xl">
+          Earning Calculator
+          <div onClick={() => setModalCheck(true)} className="cursor-pointer transition transform hover:scale-110"> {icons[coin]} </div>
         </h2>
 
         <div className="w-full">
@@ -138,7 +169,7 @@ const App = () => {
           </div>
           {errors.totalMonth && (
             <div
-              className="mx-2 my-[2px] font-semibold text-red-700
+              className="mx-2 my-[2px] font-semibold text-red-700 whitespace-normal text-center
           max-[370px]:text-sm max-[330px]:text-[12px]"
             >
               {errors.totalMonth?.message}
@@ -164,7 +195,7 @@ const App = () => {
           </div>
           {errors.coinNumber && (
             <div
-              className="mx-2 my-[2px] font-semibold text-red-700
+              className="mx-2 my-[2px] font-semibold text-red-700 whitespace-normal text-center
           max-[370px]:text-sm max-[330px]:text-[12px]"
             >
               {errors.coinNumber?.message}
@@ -191,8 +222,8 @@ const App = () => {
           </div>
           {errors.dayNumber && (
             <div
-              className="mx-2 my-[2px] font-semibold text-red-700
-          max-[370px]:text-sm max-[330px]:text-[12px]"
+              className="mx-2 my-[2px] font-semibold text-red-700 whitespace-normal text-center
+              max-[370px]:text-sm max-[330px]:text-[12px]"
             >
               {errors.dayNumber?.message}
             </div>
